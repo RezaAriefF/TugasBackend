@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 02, 2022 at 04:13 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.0.19
+-- Waktu pembuatan: 03 Sep 2022 pada 06.09
+-- Versi server: 10.4.22-MariaDB
+-- Versi PHP: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `article`
+-- Struktur dari tabel `article`
 --
 
 CREATE TABLE `article` (
@@ -39,7 +39,7 @@ CREATE TABLE `article` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auth_user`
+-- Struktur dari tabel `auth_user`
 --
 
 CREATE TABLE `auth_user` (
@@ -51,16 +51,17 @@ CREATE TABLE `auth_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `auth_user`
+-- Dumping data untuk tabel `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `username`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'Amri', '$2b$10$iXbErVt06.ij23PJQspqGu52x860HL5YKBtIUxiyT68yBMkCQ2Ya2', '2022-09-02 14:06:47', '2022-09-02 14:06:47');
+(3, 'reza', '$2b$10$.B9IhBP9RGIo9y/rQgvcbelMVeRAg8L8DhAa6gCBsqrIKW2iHXcUm', '2022-09-02 14:27:01', '2022-09-02 14:27:01'),
+(4, 'arief', '$2b$10$92TFp48HToiDJHS5kag30.lhBHYEoneQp6l7irk6W5qzH4hxqQG0m', '2022-09-02 14:29:00', '2022-09-02 14:29:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Struktur dari tabel `comment`
 --
 
 CREATE TABLE `comment` (
@@ -77,20 +78,20 @@ CREATE TABLE `comment` (
 --
 
 --
--- Indexes for table `article`
+-- Indeks untuk tabel `article`
 --
 ALTER TABLE `article`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `auth_user`
+-- Indeks untuk tabel `auth_user`
 --
 ALTER TABLE `auth_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comment`
+-- Indeks untuk tabel `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`),
@@ -98,39 +99,39 @@ ALTER TABLE `comment`
   ADD KEY `id_article` (`id_article`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `article`
+-- AUTO_INCREMENT untuk tabel `article`
 --
 ALTER TABLE `article`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `auth_user`
+-- AUTO_INCREMENT untuk tabel `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `comment`
+-- AUTO_INCREMENT untuk tabel `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `article`
+-- Ketidakleluasaan untuk tabel `article`
 --
 ALTER TABLE `article`
   ADD CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `auth_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `comment`
+-- Ketidakleluasaan untuk tabel `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `auth_user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
